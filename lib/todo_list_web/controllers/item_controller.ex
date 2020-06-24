@@ -6,7 +6,8 @@ defmodule TodoListWeb.ItemController do
 
   def index(conn, _params) do
     items = Todo.list_items()
-    render(conn, "index.html", items: items)
+    changeset = Todo.change_item(%Item{})
+    render(conn, "index.html", items: items, changeset: changeset)
   end
 
   def new(conn, _params) do
@@ -19,7 +20,7 @@ defmodule TodoListWeb.ItemController do
       {:ok, item} ->
         conn
         |> put_flash(:info, "Item created successfully.")
-        |> redirect(to: Routes.item_path(conn, :show, item))
+        |> redirect(to: Routes.item_path(conn, :index))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -58,5 +59,18 @@ defmodule TodoListWeb.ItemController do
     conn
     |> put_flash(:info, "Item deleted successfully.")
     |> redirect(to: Routes.item_path(conn, :index))
+  end
+
+  def toggle_status(item) do
+    case item.status do
+      1 -> 0
+      0 -> 1
+    end
+  end
+
+  def toggle(conn, %{"id" => id}) do
+    item = Todo.get_item!(id)
+    Todo.update_item(item, %{status: toggle_status(item)})
+    redirect(conn, to: Routes.item_path(conn, :index))
   end
 end
