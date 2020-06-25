@@ -15,7 +15,7 @@ defmodule TodoListWeb.ItemControllerTest do
   describe "index" do
     test "lists all items", %{conn: conn} do
       conn = get(conn, Routes.item_path(conn, :index))
-      assert html_response(conn, 200) =~ "Listing Items"
+      assert html_response(conn, 200) =~ "todos"
     end
   end
 
@@ -48,7 +48,7 @@ defmodule TodoListWeb.ItemControllerTest do
 
     test "renders form for editing chosen item", %{conn: conn, item: item} do
       conn = get(conn, Routes.item_path(conn, :edit, item))
-      assert html_response(conn, 200) =~ "Edit Item"
+      assert html_response(conn, 200) =~ item.text
     end
   end
 
@@ -57,7 +57,7 @@ defmodule TodoListWeb.ItemControllerTest do
 
     test "redirects when data is valid", %{conn: conn, item: item} do
       conn = put(conn, Routes.item_path(conn, :update, item), item: @update_attrs)
-      assert redirected_to(conn) == Routes.item_path(conn, :show, item)
+      assert redirected_to(conn) == Routes.item_path(conn, :index)
 
       conn = get(conn, Routes.item_path(conn, :show, item))
       assert html_response(conn, 200) =~ "some updated text"
