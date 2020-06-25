@@ -32,4 +32,13 @@ defmodule TodoListWeb.ItemViewTest do
     items = []
     assert ItemView.remaining_items(items) == 0
   end
+
+  test "pluralise/1 returns item for 1 item or items for > 1" do
+    assert ItemView.pluralise([%{text: "one", status: 0}]) == "item"
+    assert ItemView.pluralise([
+      %{text: "one", status: 0},
+      %{text: "two", status: 0}
+    ]) == "items"
+    assert ItemView.pluralise([%{text: "one", status: 1}]) == "items"
+  end
 end

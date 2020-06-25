@@ -35,4 +35,15 @@ defmodule TodoListWeb.ItemView do
       false -> ""
     end
   end
+
+  def pluralise(items) do
+    case remaining_items(items) == 0 || remaining_items(items) > 1 do
+      true  -> "items"
+      false -> "item"
+    end
+  end
+
+  def got_items?(items) do
+    Enum.filter(items, fn i -> i.status < 2 end) |> Enum.count > 0
+  end
 end
