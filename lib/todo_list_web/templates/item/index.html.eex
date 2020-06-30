@@ -10,8 +10,6 @@
     <% end %>
     </header>
   <section class="main" style="display: block;">
-  	<input id="toggle-all" class="toggle-all" type="checkbox">
-  	<label for="toggle-all">Mark all as complete</label>
   	<ul class="todo-list">
       <%= for item <- filter(@items, @filter) do %>
         <li data-id="<%= item.id %>" class="<%= complete(item) %>">
