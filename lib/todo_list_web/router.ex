@@ -19,8 +19,8 @@ defmodule TodoListWeb.Router do
     get "/", ItemController, :index
     resources "/items", ItemController
     get "/items/toggle/:id", ItemController, :toggle
-    get "/:filter", ItemController, :index
     get "/clear", ItemController, :clear_completed
+    get "/:filter", ItemController, :index
   end
 
   # Other scopes may use custom stacks.
