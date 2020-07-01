@@ -18,7 +18,7 @@ defmodule TodoList.Todo do
 
   """
   def list_items do
-    Repo.all(Item)
+    Item |> order_by(asc: :inserted_at) |> Repo.all()
   end
 
   @doc """

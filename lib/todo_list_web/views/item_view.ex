@@ -23,7 +23,7 @@ defmodule TodoListWeb.ItemView do
 
   def filter(items, str) do
     case str do
-      "all"       -> items
+      "all"       -> Enum.filter(items, fn i -> i.status == 0 or i.status == 1 end)
       "active"    -> Enum.filter(items, fn i -> i.status == 0 end)
       "completed" -> Enum.filter(items, fn i -> i.status == 1 end)
     end
