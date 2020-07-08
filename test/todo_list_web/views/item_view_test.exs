@@ -33,6 +33,11 @@ defmodule TodoListWeb.ItemViewTest do
     assert ItemView.remaining_items(items) == 0
   end
 
+  test "selected/2 returns class 'selected' if filter == item" do
+    assert ItemView.selected("all", "all") == "selected"
+    assert ItemView.selected("all", "active") == ""
+  end
+
   test "pluralise/1 returns item for 1 item or items for > 1" do
     assert ItemView.pluralise([%{text: "one", status: 0}]) == "item"
     assert ItemView.pluralise([
@@ -40,5 +45,15 @@ defmodule TodoListWeb.ItemViewTest do
       %{text: "two", status: 0}
     ]) == "items"
     assert ItemView.pluralise([%{text: "one", status: 1}]) == "items"
+  end
+
+  test "got_items?/1 returns true when items are status == 0 or status == 1" do
+    items = [
+      %{text: "one", status: 0},
+      %{text: "two", status: 1},
+      %{text: "tree", status: 2}
+    ]
+
+    assert ItemView.got_items?(items) == true
   end
 end
