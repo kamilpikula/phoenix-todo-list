@@ -2,6 +2,16 @@ defmodule TodoListWeb.ItemViewTest do
   use TodoListWeb.ConnCase, async: true
   alias TodoListWeb.ItemView
 
+  @active_item [%{text: "one", status: 0}]
+  @completed_item [%{text: "one", status: 1}]
+  @clear_items []
+  @items [
+    %{text: "one", status: 0},
+    %{text: "two", status: 0},
+    %{text: "tree", status: 1},
+    %{text: "four", status: 2}
+  ]
+
   test "complete/1 returns completed if item.status == 1" do
     assert ItemView.complete(%{status: 1}) == "completed"
   end
@@ -19,18 +29,11 @@ defmodule TodoListWeb.ItemViewTest do
   end
 
   test "remaining_items/1 returns count of items where item.status==0" do
-    items = [
-      %{text: "one", status: 0},
-      %{text: "two", status: 0},
-      %{text: "tree", status: 1}
-    ]
-
-    assert ItemView.remaining_items(items) == 2
+    assert ItemView.remaining_items(@items) == 2
   end
 
   test "remaining_items/1 returns 0 (zero) when no items are status==0" do
-    items = []
-    assert ItemView.remaining_items(items) == 0
+    assert ItemView.remaining_items(@clear_items) == 0
   end
 
   test "selected/2 returns class 'selected' if filter == item" do
@@ -39,21 +42,12 @@ defmodule TodoListWeb.ItemViewTest do
   end
 
   test "pluralise/1 returns item for 1 item or items for > 1" do
-    assert ItemView.pluralise([%{text: "one", status: 0}]) == "item"
-    assert ItemView.pluralise([
-      %{text: "one", status: 0},
-      %{text: "two", status: 0}
-    ]) == "items"
-    assert ItemView.pluralise([%{text: "one", status: 1}]) == "items"
+    assert ItemView.pluralise(@active_item) == "item"
+    assert ItemView.pluralise(@items) == "items"
+    assert ItemView.pluralise(@completed_item) == "items"
   end
 
   test "got_items?/1 returns true when items are status == 0 or status == 1" do
-    items = [
-      %{text: "one", status: 0},
-      %{text: "two", status: 1},
-      %{text: "tree", status: 2}
-    ]
-
-    assert ItemView.got_items?(items) == true
+    assert ItemView.got_items?(@items) == true
   end
 end
