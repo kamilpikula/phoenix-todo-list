@@ -3,7 +3,7 @@
     <h1>todos</h1>
     <%= if @editing.id do %>
       <a href="<%= Routes.item_path(@conn, :index) %>" class="new-todo">
-        Click here to create a new item!
+        <%= gettext("Click here to create a new item!") %>
       </a>
     <% else %>
       <%= render "form.html", Map.put(assigns, :action, Routes.item_path(@conn, :create)) %>
@@ -13,7 +13,7 @@
   	<ul class="todo-list">
       <%= for item <- filter(@items, @filter) do %>
         <li data-id="<%= item.id %>" class="<%= complete(item) %>">
-          
+
           <a href="<%= Routes.item_path(@conn, :toggle, item.id) %>"
             class="toggle <%= checked(item) %>">
           </a>
@@ -31,34 +31,36 @@
 
           <%= link "", class: "destroy", method: :delete,
             to: Routes.item_path(@conn, :delete, item),
-            data: [confirm: "Are you sure?"] %>
+            data: [confirm: gettext("Are you sure?")] %>
           </div>
-        </li> 
-      <% end %> 
+        </li>
+      <% end %>
     </ul>
   </section>
   <%= if got_items?(@items) do %>
     <footer class="footer" style="display: block;">
-      <span class="todo-count"><%= remaining_items(@items) %> <%= pluralise(@items) %> left</span>
+      <span class="todo-count">
+        <%= ngettext("%{count} item left", "%{count} items left", remaining_items(@items)) %>
+      </span>
       <ul class="filters">
         <li>
-          <a href="/items" class='<%= selected(@filter, "all") %>'>All</a>
+          <a href="/items" class='<%= selected(@filter, "all") %>'><%= gettext("All") %></a>
         </li>
         <li>
           <a href="/active" class='<%= selected(@filter, "active") %>'>
-            Active
+            <%= gettext("Active") %>
             [<%= Enum.count(filter(@items, "active")) %>]
           </a>
         </li>
         <li>
           <a href="/completed" class='<%= selected(@filter, "completed") %>'>
-            Completed
+            <%= gettext("Completed") %>
             [<%= Enum.count(filter(@items, "completed")) %>]
           </a>
         </li>
       </ul>
       <a class="clear-completed" href="/clear">
-        Clear completed
+        <%= gettext("Clear completed") %>
         [<%= Enum.count(filter(@items, "completed")) %>]
       </a>
     </footer>

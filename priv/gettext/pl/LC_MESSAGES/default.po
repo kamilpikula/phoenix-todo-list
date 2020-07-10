@@ -8,47 +8,48 @@
 ## to merge POT files into PO files.
 msgid ""
 msgstr ""
-"Language: en\n"
-"Plural-Forms: nplurals=2\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3\n"
 
 #, elixir-format
 #: lib/todo_list_web/templates/item/form.html.eex:2
 msgid "what needs to be done?"
-msgstr ""
+msgstr "co trzeba zrobić?"
 
 #, elixir-format
 #: lib/todo_list_web/templates/item/index.html.eex:51
 msgid "Active"
-msgstr ""
+msgstr "Aktywne"
 
 #, elixir-format
 #: lib/todo_list_web/templates/item/index.html.eex:34
 msgid "Are you sure?"
-msgstr ""
+msgstr "Jesteś pewien?"
 
 #, elixir-format
 #: lib/todo_list_web/templates/item/index.html.eex:63
 msgid "Clear completed"
-msgstr ""
+msgstr "Czyść skończone"
 
 #, elixir-format
 #: lib/todo_list_web/templates/item/index.html.eex:6
 msgid "Click here to create a new item!"
-msgstr ""
+msgstr "Kliknij tutaj, aby utworzyć zadanie!"
 
 #, elixir-format
 #: lib/todo_list_web/templates/item/index.html.eex:57
 msgid "Completed"
-msgstr ""
+msgstr "Skończone"
 
 #, elixir-format
 #: lib/todo_list_web/templates/item/index.html.eex:47
 msgid "All"
-msgstr ""
+msgstr "Ogół"
 
 #, elixir-format
 #: lib/todo_list_web/templates/item/index.html.eex:43
 msgid "%{count} item left"
 msgid_plural "%{count} items left"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Zostało: %{count} zadanie"
+msgstr[1] "Zostało: %{count} zadania"
+msgstr[2] "Zostało: %{count} zadań"
