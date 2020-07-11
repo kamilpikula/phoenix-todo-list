@@ -1,0 +1,53 @@
+## This file is a PO Template file.
+##
+## "msgid"s here are often extracted from source code.
+## Add new translations manually only if they're dynamic
+## translations that can't be statically extracted.
+##
+## Run "mix gettext.extract" to bring this file up to
+## date. Leave "msgstr"s empty as changing them here as no
+## effect: edit them in PO (.po) files instead.
+msgid ""
+msgstr ""
+
+#, elixir-format
+#: lib/todo_list_web/templates/item/form.html.eex:2
+msgid "what needs to be done?"
+msgstr ""
+
+#, elixir-format
+#: lib/todo_list_web/templates/item/index.html.eex:51
+msgid "Active"
+msgstr ""
+
+#, elixir-format
+#: lib/todo_list_web/templates/item/index.html.eex:34
+msgid "Are you sure?"
+msgstr ""
+
+#, elixir-format
+#: lib/todo_list_web/templates/item/index.html.eex:63
+msgid "Clear completed"
+msgstr ""
+
+#, elixir-format
+#: lib/todo_list_web/templates/item/index.html.eex:6
+msgid "Click here to create a new item!"
+msgstr ""
+
+#, elixir-format
+#: lib/todo_list_web/templates/item/index.html.eex:57
+msgid "Completed"
+msgstr ""
+
+#, elixir-format
+#: lib/todo_list_web/templates/item/index.html.eex:47
+msgid "All"
+msgstr ""
+
+#, elixir-format
+#: lib/todo_list_web/templates/item/index.html.eex:43
+msgid "%{count} item left"
+msgid_plural "%{count} items left"
+msgstr[0] ""
+msgstr[1] ""

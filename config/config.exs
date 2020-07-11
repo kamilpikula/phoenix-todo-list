@@ -7,6 +7,12 @@
 # General application configuration
 use Mix.Config
 
+# Configures languages
+config :todo_list, TodoListWeb.Gettext,
+  default_locale: "en",
+  locales: ~w(en pl)
+
+
 config :todo_list,
   ecto_repos: [TodoList.Repo]
 
