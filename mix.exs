@@ -45,6 +45,7 @@ defmodule TodoList.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
+      {:locale_plug, "~> 0.1.2"},
       {:credo, "~> 1.2"}
     ]
   end
